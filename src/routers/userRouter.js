@@ -1,5 +1,4 @@
 import express from 'express';
-import { finishGHAuth, startGHAuth } from '../controllers/socialAuth';
 import {
   profile,
   getEdit,

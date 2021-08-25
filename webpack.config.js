@@ -5,6 +5,10 @@ const BASE_JS = './src/client/scripts/';
 module.exports = {
   entry: {
     main: BASE_JS + 'main.js',
+    video_grid: BASE_JS + 'video-grid.js',
+    video_player: BASE_JS + 'videoPlayer.js',
+    validator: BASE_JS + 'validator.js',
+    comments: BASE_JS + 'comments.js',
   },
   plugins: [
     new MiniCSSExtractPlugin({

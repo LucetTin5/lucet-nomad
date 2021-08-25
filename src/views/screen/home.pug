@@ -2,7 +2,11 @@ extends ../layout
 include ../mixins/video
 
 block contents
-  each video in videos
-    +video(video)
-  else
-    span No video found.
+  .video__grid
+    each video in videos
+      +video(video)
+    else
+      span No video found.
+
+block scripts
+  script(src="/static/scripts/video_grid.js") 

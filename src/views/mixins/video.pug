@@ -5,4 +5,5 @@ mixin video(video)
       .video__box__info#infoBox
         span.video__info--title#title=video.title
         span.video__info--views#views=video.meta.views
-        span.video__info--created#createdAt 
+        span.video__info--created#createdAt=video.createdAt
+        span.video__info--created#createdAgo

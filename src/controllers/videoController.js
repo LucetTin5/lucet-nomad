@@ -49,7 +49,16 @@ export const postUpload = async (req, res) => {
 export const watch = async (req, res) => {
   const { id } = req.params;
   try {
-    const video = await Video.findById(id).populate('uploader');
+    const video = await Video.findById(id).populate([
+      'uploader',
+      {
+        path: 'comments',
+        populate: {
+          path: 'writer',
+          model: 'User',
+        },
+      },
+    ]);
     return res.render('./screen/videos/watch', {
       pageTitle: video.title,
       video,
@@ -124,4 +133,25 @@ export const search = async (req, res) => {
   }
 };
 
-export const deleteVideo = (req, res) => res.end();
+export const deleteVideo = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const video = await Video.findById(id).populate(['uploader', 'comments']);
+    const { _id } = video.uploader;
+    const uploader = await User.findById(_id);
+    uploader.videos = uploader.videos.filter(
+      (vidId) => String(vidId) !== String(id)
+    );
+    uploader.save();
+    if (video.comments.length > 0) {
+      for (let i = 0; i < video.comments.length; i++) {
+        await Comment.findByIdAndDelete(video.comments[i]._id);
+      }
+    }
+    await Video.findByIdAndDelete(id);
+    return res.redirect('/');
+  } catch (err) {
+    console.log(err);
+    return res.status(400).redirect(`/videos/${id}`);
+  }
+};

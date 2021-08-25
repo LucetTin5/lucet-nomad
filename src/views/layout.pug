@@ -9,7 +9,7 @@ html(lang="en")
     link(rel="stylesheet", href="https://unpkg.com/mvp.css")
     link(rel="stylesheet", href="/static/css/styles.css")
     link(rel="shortcut icon", href="#", type="image/x-icon")
-    title #{pageTitle="Lucet"} | #{siteName}
+    title #{pageTitle || "Lucet"} | #{siteName}
   body 
     include ./partials/header
     main

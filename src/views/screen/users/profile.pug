@@ -5,6 +5,7 @@ block contents
     .profile__header
       img.profile__image
       span=user.name
-    //- 업로드한 비디오가 있을 경우
-      .profile__videos.video__grid
-    
+  .profile__videos.video__grid
+
+block scripts
+  script(src="/static/scripts/video_grid.js") 

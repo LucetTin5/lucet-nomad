@@ -12,6 +12,7 @@ import rootRouter from './routers/rootRouter';
 import userRouter from './routers/userRouter';
 import videoRouter from './routers/videoRouter';
 import socialRouter from './routers/socialRouter';
+import apiRouter from './routers/apiRouter';
 import { globalVariables } from './middlewares';
 
 const App = express();
@@ -47,5 +48,6 @@ App.use(routes.ROOT.root, rootRouter);
 App.use(routes.USERS.root, userRouter);
 App.use(routes.VIDEOS.root, videoRouter);
 App.use(routes.SOCIAL.root, socialRouter);
+App.use(routes.APIS.root, apiRouter);
 
 export default App;

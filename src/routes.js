@@ -1,3 +1,5 @@
+const ID_FORM = 'id([0-9a-z]{24})';
+
 const tree = {
   ROOT: {
     root: '/',
@@ -9,23 +11,28 @@ const tree = {
   },
   USERS: {
     root: '/users',
-    profile: '/:id([0-9a-z]{24})',
-    edit: '/:id([0-9a-z]{24})/edit',
-    changePassword: '/:id([0-9a-z]{24})/change-password',
+    profile: `/:${ID_FORM}`,
+    edit: `/:${ID_FORM}/edit`,
+    changePassword: `/:${ID_FORM}/change-password`,
   },
   VIDEOS: {
     root: '/videos',
-    watch: '/:id([0-9a-z]{24})',
+    watch: `/:${ID_FORM}`,
     upload: '/upload',
-    edit: '/:id([0-9a-z]{24})/edit',
-    delete: '/:id([0-9a-z]{24})/delete',
+    edit: `/:${ID_FORM}/edit`,
+    delete: `/:${ID_FORM}/delete`,
   },
   SOCIAL: {
     root: '/social',
     ghStart: '/gh/start',
     ghFinish: '/gh/finish',
   },
-  APIS: {},
+  APIS: {
+    root: '/api',
+    newComment: `/videos/:${ID_FORM}/new-comment`,
+    editComment: `/comments/:${ID_FORM}/edit`,
+    deleteComment: `/videos/:${ID_FORM}/delete-comment`,
+  },
 };
 
 export default tree;

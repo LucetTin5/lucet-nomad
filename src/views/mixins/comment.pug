@@ -6,9 +6,9 @@ mixin comment(comment)
     .comment__buttons
       if !loggedIn
         //- 로그인되어있지 않을 시
-        button.comment-likes
+        button.comment-like
           span.material-icons.material-icons-outlined thumb_up
-        button.comment-dislikes
+        button.comment-dislike
           span.material-icons.material-icons-outlined thumb_down
       else
         if String(loggedInUser._id) === String(comment.writer._id)
@@ -19,7 +19,20 @@ mixin comment(comment)
             span.material-icons.material-icons-outlined clear
         else
           //- 현재 사용자와 코멘트 작성자가 다를 시
-          button.comment-like
-            span.material-icons.material-icons-outlined thumb_up
-          button.comment-dislike
-            span.material-icons.material-icons-outlined thumb_down
+          if comment.meta.likeUser.some((userId) => String(userId) === loggedInUser._id)
+            button.comment-like.selected
+              span.material-icons.material-icons-outlined thumb_up
+            button.comment-dislike.disabled
+              span.material-icons.material-icons-outlined thumb_down    
+          else if comment.meta.dislikeUser.some((userId) => String(userId) === loggedInUser._id)
+            button.comment-like.disabled
+              span.material-icons.material-icons-outlined thumb_up
+            button.comment-dislike.selected
+              span.material-icons.material-icons-outlined thumb_down
+          else
+            button.comment-like
+              span.material-icons.material-icons-outlined thumb_up
+            button.comment-dislike
+              span.material-icons.material-icons-outlined thumb_down
+
+  span #{typeof loggedInUser._id} ///

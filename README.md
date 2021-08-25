@@ -22,14 +22,14 @@
 
 ### Video Player
 
-- [ ] video controls - custom
-- [ ] video page command - keyboard, mouse events ...
+- [x] video controls - custom
+- [x] video page command - keyboard, mouse events ...
 
 ### Comments
 
-- [ ] Comment section under 'watch' page
-- [ ] Fake Commnet like real-time
-- [ ] Comment Delete
+- [x] Comment section under 'watch' page
+- [x] Fake Commnet like real-time
+- [x] Comment Delete
 
 ### Deployment
 
@@ -48,3 +48,32 @@
 - [ ] 사용 가능한 email 체크
 - [ ] Random Username Generator
 - [ ] like/dislike on comment, video
+
+---
+
+## Plan
+
+### 21.08.25
+
+Finish Comment section - ~~_modify_~~ / ~~_delete_~~ / ~~_like_~~ / ~~_dislike_~~
+
+### 21.08.26 -- Finish Backend
+
+---
+
+- 필수
+  - Email validation (api)
+  - Default Avatar/Thumbnail Image
+  - Deployment
+
+---
+
+- 더하고 싶은 것
+  - Random Username
+  - Social Auth - Naver, Kakaotalk, Facebook
+  - S3 file delete/change
+
+### 21.08.27 -- Finish Frontend
+
+- Password Validation (confirm - create acc)
+- Styling

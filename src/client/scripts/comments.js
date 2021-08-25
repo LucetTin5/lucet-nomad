@@ -8,7 +8,55 @@ const getTargetNode = (node) => {
   }
   return node;
 };
-
+const likeComment = async (event) => {
+  event.preventDefault();
+  let { target } = event;
+  if (target.className !== 'comment-like') {
+    target = target.parentNode;
+  }
+  if (typeof target.classList[1] !== 'undefined') {
+    target.removeEventListener('click', likeComment);
+    return;
+  }
+  target.removeEventListener('click', likeComment);
+  const comment = getTargetNode(target);
+  const commentId = comment.dataset.id;
+  try {
+    const res = await fetch(`/api/comments/${commentId}/like-comment`, {
+      method: 'POST',
+    });
+    console.log(res.status);
+    if (res.status === 200) {
+      comment.querySelector('.comment-dislike').classList.add('disabled');
+      target.classList.add('selected');
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+const dislikeComment = async (event) => {
+  event.preventDefault();
+  let { target } = event;
+  if (target.className !== 'comment-dislke') {
+    target = target.parentNode;
+  }
+  if (typeof target.classList[1] !== 'undefined') {
+    target.removeEventListener('click', dislikeComment);
+    return;
+  }
+  target.removeEventListener('click', dislikeComment);
+  try {
+    const res = await fetch(`/api/comments/${commentId}/like-comment`, {
+      method: 'POST',
+    });
+    if (res.status === 200) {
+      comment.querySelector('.comment-like').classList.add('disabled');
+      target.classList.add('selected');
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
 const editComment = (event) => {
   event.preventDefault();
   let { target } = event;
@@ -18,6 +66,7 @@ const editComment = (event) => {
   target.removeEventListener('click', editComment);
   target.querySelector('span').innerText = 'done';
   const comment = getTargetNode(target);
+  comment.querySelector('.comment-delete').disabled = true;
   const currentComment = comment.querySelector('.comment-text');
   const input = document.createElement('input');
   input.type = text;
@@ -52,9 +101,11 @@ const editCommentFinish = async (event) => {
       currentComment.setAttribute('style', 'display: inline');
       target.querySelector('span').innerText = 'edit_note';
       target.addEventListener('click', editComment);
+      comment.querySelector('.comment-delete').disabled = false;
     }
   } catch (err) {
     console.log(err);
+    comment.querySelector('.comment-delete').disabled = false;
   }
 };
 const deleteComment = async (event) => {
@@ -142,6 +193,7 @@ const addNewComment = async (event) => {
 };
 
 form.addEventListener('submit', addNewComment);
+
 (() => {
   comments
     .querySelectorAll('.comment-edit')
@@ -149,4 +201,10 @@ form.addEventListener('submit', addNewComment);
   comments
     .querySelectorAll('.comment-delete')
     .forEach((btn) => btn.addEventListener('click', deleteComment));
+  comments
+    .querySelectorAll('.comment-like')
+    .forEach((btn) => btn.addEventListener('click', likeComment));
+  comments
+    .querySelectorAll('.comment-dislike')
+    .forEach((btn) => btn.addEventListener('click', dislikeComment));
 })();

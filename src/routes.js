@@ -32,6 +32,9 @@ const tree = {
     newComment: `/videos/:${ID_FORM}/new-comment`,
     editComment: `/comments/:${ID_FORM}/edit`,
     deleteComment: `/videos/:${ID_FORM}/delete-comment`,
+    likeComment: `/comments/:${ID_FORM}/like-comment`,
+    dislikeComment: `/comments/:${ID_FORM}/dislike-comment`,
+    checkEmailAvailability: `/valid-email`,
   },
 };
 

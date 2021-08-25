@@ -1,0 +1,12 @@
+extends ../../layout
+
+block contents
+  .video__edit
+    form(method="post")
+      label(for="title") Title
+        input#title(type="text", name="title" value=video.title)
+      label(for="description") Description
+        input#description(type="text", name="description" value=video.description)
+      label(for="tags") Tags seperated by comma
+        input#tags(type="text" name="tags" value=video.tags.join())
+      input(type="submit", value="Update Video")

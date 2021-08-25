@@ -1,0 +1,21 @@
+header
+  nav
+    a(href='/')
+      span.material-icons.material-icons-outlined.md-36 home
+    a(href="/search")
+      span.material-icons.material-icons-outlined.md-36 search
+    if loggedIn
+      a(href="/videos/upload")
+        span Upload Video
+      a(href='/users/'+loggedInUser._id)
+        if loggedInUser.avatarUrl
+          img.avatar-small(src=loggedInUser.avatarUrl.startsWith("http") ? loggedInUser.avatarUrl : '/'+loggedInUser.avatarUrl, alt=loggedInUser.username)
+        else
+          span.material-icons.material-icons-outlined.md-36 person_outline
+      a(href="/logout")
+        span.material-icons.material-icons-outlined.md-36 logout
+    else
+      a(href="/join")
+        span.material-icons.material-icons-outlined.md-36 person_add_alt
+      a(href="/login")
+        span.material-icons.material-icons-outlined.md-36 login

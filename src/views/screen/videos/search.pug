@@ -1,0 +1,22 @@
+extends ../../layout
+include ../../mixins/video
+
+block contents 
+  .search__container 
+    form(method="get")
+      label(for="option") Search Option
+        select#option(name="option" required)
+          option(value="") <-- Choose an search option -->
+          option(value="title") Title
+          option(value="tags") Tags
+          option(value="uploader") Uploader
+      label(for="keyword") Keyword
+        input#keyword(type="text", name="keyword" required)
+      button
+        span.material-icons.material-icons-outlined search
+  .search__result.video__grid
+    if videos
+      each video in videos
+        +video(video)
+      else
+        span No video found

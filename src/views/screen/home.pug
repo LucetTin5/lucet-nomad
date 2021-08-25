@@ -1,0 +1,8 @@
+extends ../layout
+include ../mixins/video
+
+block contents
+  each video in videos
+    +video(video)
+  else
+    span No video found.

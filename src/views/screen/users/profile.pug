@@ -1,0 +1,10 @@
+extends ../../layout
+
+block contents
+  .profile__container
+    .profile__header
+      img.profile__image
+      span=user.name
+    //- 업로드한 비디오가 있을 경우
+      .profile__videos.video__grid
+    

@@ -1,0 +1,8 @@
+mixin video(video)
+  a(href=`/videos/${video.id}`)
+    .video__box#videoBox
+      img.video__box--thumb#thumb(src='/'+video.thumbPath alt=video.title)
+      .video__box__info#infoBox
+        span.video__info--title#title=video.title
+        span.video__info--views#views=video.meta.views
+        span.video__info--created#createdAt 

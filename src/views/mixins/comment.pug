@@ -1,0 +1,15 @@
+mixin comment(comment)
+  .comment__container(data-id=comment._id)
+    a(href=comment.owner._id)
+      //- img(src=comment.owner.avatar alt="") 코멘트를 남긴 유저의 프로필 링크
+    span=comment.comment
+    .comment__buttons
+    //- 로그인되어있지 않을 시
+      span#comment-likes
+      span#comment-dislikes
+    //- 현재 사용자와 코멘트 작성자가 다를 시
+      button#comment-like
+      button#comment-dislike
+    //- 현재 사용자와 코멘트 작성자가 동일할 시
+      button#comment-edit
+      button#comment-delete

@@ -1,3 +1,4 @@
+const form = document.querySelector('form');
 const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
 const pwChecker = document.getElementById('pwSameChecker');

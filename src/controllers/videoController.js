@@ -137,18 +137,24 @@ export const deleteVideo = async (req, res) => {
   const { id } = req.params;
   try {
     const video = await Video.findById(id).populate(['uploader', 'comments']);
-    const { _id } = video.uploader;
-    const uploader = await User.findById(_id);
-    uploader.videos = uploader.videos.filter(
-      (vidId) => String(vidId) !== String(id)
-    );
-    uploader.save();
-    if (video.comments.length > 0) {
-      for (let i = 0; i < video.comments.length; i++) {
-        await Comment.findByIdAndDelete(video.comments[i]._id);
-      }
+    if (video.populated('uploader') && video.uploader.length !== 0) {
+      console.log('uploader populated');
+      const { _id } = video.uploader;
+      const uploader = await User.findById(_id);
+      console.log('uploader videos before: ', uploader.video);
+      uploader.videos = uploader.videos.filter((vid) => String(vid) !== id);
+      console.log('uploader videos after: ', uploader.video);
+      uploader.save();
     }
-    await Video.findByIdAndDelete(id);
+    if (video.pupulated('comments') && video.comments.length !== 0) {
+      video.comments.forEach((comment) => {
+        await Comment.findByIdAndRemove(comment._id, {}, (err) =>
+          console.log(err)
+        );
+      });
+    }
+    await Video.findByIdAndRemove(id, {}, (err) => console.log(err));
+    console.log('video deleted', `${video ? 'fail' : 'deleted'}`);
     return res.redirect('/');
   } catch (err) {
     console.log(err);

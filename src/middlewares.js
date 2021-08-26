@@ -13,7 +13,7 @@ const s3 = new aws.S3({
 const storage = (folder) => {
   return multerS3({
     s3,
-    bucket: `lucet-wetube/${folder}/`,
+    bucket: `lucet-wetube/${folder}`,
     acl: 'public-read',
   });
 };
@@ -36,7 +36,7 @@ export const globalVariables = (req, res, next) => {
 
 const deleteParams = (folder, fileId) => {
   return {
-    Bucket: `${process.env.S3_NAME}/${folder}/`,
+    Bucket: `${process.env.S3_NAME}/${folder}`,
     Key: fileId,
   };
 };

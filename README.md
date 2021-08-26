@@ -33,9 +33,9 @@
 
 ### Deployment
 
-- [ ] MongoDB Atlas
-- [ ] AWS S3
-- [ ] Heroku
+- [x] MongoDB Atlas
+- [x] AWS S3
+- [x] Heroku
 
 ---
 
@@ -43,11 +43,11 @@
 
 - [ ] Social Login? (Kakao? Facebook ...)
 - [ ] Delete existing video/avatar at aws s3
-- [ ] default Avatar/Thumbnail image
-- [ ] password validation on frontend
-- [ ] 사용 가능한 email 체크
-- [ ] Random Username Generator
-- [ ] like/dislike on comment, video
+- [x] default Avatar/Thumbnail image
+- [x] password validation on frontend
+- [x] 사용 가능한 email 체크
+- [x] Random Username Generator
+- [ ] like/dislike on ~~_comment_~~, video
 
 ---
 
@@ -62,9 +62,9 @@ Finish Comment section - ~~_modify_~~ / ~~_delete_~~ / ~~_like_~~ / ~~_dislike_~
 0826 today's planc
 
 - Deployment setup
-  - [ ] mongodb atlas
-  - [ ] AWS S3
-  - [ ] Heroku space
+  - [x] mongodb atlas
+  - [x] AWS S3
+  - [x] Heroku space
 - Default Image?
   - [x] default folder created.
   - [x] need default images (for unknown avatar, thumbnail)
@@ -73,16 +73,16 @@ Finish Comment section - ~~_modify_~~ / ~~_delete_~~ / ~~_like_~~ / ~~_dislike_~
 ---
 
 - 필수
-  - Email validation (api)
-  - Default Avatar/Thumbnail Image
-  - Deployment
+  - [x] ~~_Email validation (api)_~~
+  - [x] ~~_Default Avatar/Thumbnail Image_~~
+  - [x] ~~_Deployment_~~
 
 ---
 
 - 더하고 싶은 것
-  - Random Username
-  - Social Auth - Naver, Kakaotalk, Facebook
-  - S3 file delete/change
+  - [x] Random Username
+  - [ ]Social Auth - Naver, Kakaotalk, Facebook
+  - [ ]S3 file delete/change
 
 ### 21.08.27 -- Finish Frontend
 

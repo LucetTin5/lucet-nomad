@@ -7,8 +7,12 @@ block contents
         input#avatar(type="file", name="avatar" accept="image/*" required)
       label(for="username") Username
         input#userame(type="text", name="username" required)
+      button#usernameGenerator Get Random Username
       input(type="submit", value="Update Profile")
   .profile__bottom
     a(href="/users/change-password")
       span Change Password
       span.material-icons.material-icons-outlined arrow_forward
+
+block scripts
+  script(src="/static/scripts/username.js")

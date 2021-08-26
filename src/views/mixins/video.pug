@@ -4,9 +4,9 @@ mixin video(video)
       if video.thumbPath
         img.video__box--thumb#thumb(src=video.thumbPath alt=video.title)
       else
-        img.video__box--thumb#thumb(src='https://picsum.photos/400/250.webp?random=5' alt='picsum random image')
+        img.video__box--thumb#thumb(src='/static/images/thumb.png' alt=video.title + 'without thumbnail')
       .video__box__info#infoBox
         span.video__info--title#title=video.title
-        span.video__info--views#views=video.meta.views
-        span.video__info--created#createdAt=video.createdAt
-        span.video__info--created#createdAgo
+        .video__box__info--meta
+          span=video.uploader.username
+          span=video.meta.views 

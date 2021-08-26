@@ -1,7 +1,10 @@
 mixin comment(comment)
   .comment__comment(data-id=comment._id)
     a(href=comment.writer._id)
-      //- img(src=comment.owner.avatar alt="") 코멘트를 남긴 유저의 프로필 링크
+      if comment.writer.avatarUrl
+        img(src=comment.owner.avatarUrl alt="comment writer's profile image").avatar.avatar-small
+      else
+        img(src='/static/images/user.svg' alt="comment writer's profile without image").avatar.avatar-small
     span.comment-text=comment.text
     .comment__buttons
       if !loggedIn
@@ -20,11 +23,13 @@ mixin comment(comment)
         else
           //- 현재 사용자와 코멘트 작성자가 다를 시
           if comment.meta.likeUser.some((userId) => String(userId) === loggedInUser._id)
+            //- 현재 사용자가 like를 누른 사람일 시
             button.comment-like.selected
               span.material-icons.material-icons-outlined thumb_up
             button.comment-dislike.disabled
               span.material-icons.material-icons-outlined thumb_down    
           else if comment.meta.dislikeUser.some((userId) => String(userId) === loggedInUser._id)
+            //- 현재 사용자가 dislike를 누른 사람일 시
             button.comment-like.disabled
               span.material-icons.material-icons-outlined thumb_up
             button.comment-dislike.selected
@@ -34,5 +39,3 @@ mixin comment(comment)
               span.material-icons.material-icons-outlined thumb_up
             button.comment-dislike
               span.material-icons.material-icons-outlined thumb_down
-
-  span #{typeof loggedInUser._id} ///

@@ -9,6 +9,7 @@ module.exports = {
     video_player: BASE_JS + 'videoPlayer.js',
     validator: BASE_JS + 'validator.js',
     comments: BASE_JS + 'comments.js',
+    username: BASE_JS + 'username.js',
   },
   plugins: [
     new MiniCSSExtractPlugin({
@@ -34,6 +35,16 @@ module.exports = {
       {
         test: /\.s[ac]ss$/,
         use: [MiniCSSExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.(jp(e*)g|png|svg|gif)$/i,
+        use: {
+          loader: 'file-loader',
+          options: {
+            publicPath: './static/',
+            name: 'images/[name].[ext]?[hash]',
+          },
+        },
       },
     ],
   },

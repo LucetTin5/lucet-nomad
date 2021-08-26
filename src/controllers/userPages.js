@@ -1,8 +1,23 @@
 import { deleteObject } from '../middlewares';
-
+import User from '../models/User';
 // login, join, logout, change PW 제외
-export const profile = (req, res) =>
-  res.render('./screen/users/profile', { pageTitle: 'My Profile' });
+export const profile = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    const user = await User.findById(id).populate('videos');
+    return res.render('./screen/users/profile', {
+      pageTitle: 'My Profile',
+      user,
+    });
+  } catch (err) {
+    console.log(err);
+    return res
+      .status(404)
+      .render('./screen/404', { pageTitle: '404 Not found' });
+  }
+};
 export const getEdit = (req, res) =>
   res.render('./screen/users/edit', { pageTitle: 'Edit My Profile' });
 export const postEdit = async (req, res) => {

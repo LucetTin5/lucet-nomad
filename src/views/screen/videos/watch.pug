@@ -10,7 +10,7 @@ block contents
         a(href=`${video._id}/delete`)
           span Delete Video
     //- 업로더와 동일한 사람일 시
-    video(src='/'+video.vidPath)
+    video(src=video.vidPath)
     .video__controls
       .video__controls--play
         button#playBtn

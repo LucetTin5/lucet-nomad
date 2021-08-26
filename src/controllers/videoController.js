@@ -147,11 +147,9 @@ export const deleteVideo = async (req, res) => {
       uploader.save();
     }
     if (video.pupulated('comments') && video.comments.length !== 0) {
-      video.comments.forEach((comment) => {
-        await Comment.findByIdAndRemove(comment._id, {}, (err) =>
-          console.log(err)
-        );
-      });
+      for (const cid of video.comments) {
+        await Comment.findByIdAndRemove(cid, {}, (err) => console.log(err));
+      }
     }
     await Video.findByIdAndRemove(id, {}, (err) => console.log(err));
     console.log('video deleted', `${video ? 'fail' : 'deleted'}`);

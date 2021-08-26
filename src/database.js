@@ -9,7 +9,7 @@ mongoose.connect(DB_URL, {
   useFindAndModify: false,
 });
 
-const DB = mongoose.connection;
+export const DB = mongoose.connection;
 
 DB.once('open', () => console.log('✅ DB connected'));
 DB.on('error', (error) => console.log('❌ DB Error: ', error));

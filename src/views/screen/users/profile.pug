@@ -3,12 +3,12 @@ include ../../mixins/video
 
 block contents
   .profile__container
+    if String(loggedInUser._id) === String(user._id)
+      a(href=`edit`) 
+        span Edit Profile
     .profile__header
       img.profile__image.avatar(src=user.avatarUrl ? user.avatarUrl : '/static/images/user.svg' alt=user.username)
       span=user.username
-      if String(loggedInUser._id) === String(user._id)
-        a(href=`${user._id}/edit`) 
-          span Edit Profile
   .profile__videos.video__grid
     each video in user.videos
       +video(video)

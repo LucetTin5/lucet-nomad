@@ -157,3 +157,10 @@ export const emailAvailability = async (req, res) => {
     return res.sendStatus(400);
   }
 };
+const addView = async (req, res) => {
+  const { id } = req.params;
+  const video = await Video.findById(id);
+  video.meta.views += 1;
+  video.save();
+  return res.sendStatus(200);
+};

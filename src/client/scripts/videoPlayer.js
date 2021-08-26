@@ -162,6 +162,11 @@ const handleVolumeChange = () => {
     volumeBtnIcon.innerText = `volume_${volumeKeyword(volumeValue)}`;
   }
 };
+const addVideoViews = () => {
+  const vid = videoContainer.dataset.id;
+  fetch(`/api/videos/${vid}/view`);
+};
+video.addEventListener('ended', addVideoViews);
 video.addEventListener('volumechange', handleVolumeChange);
 video.addEventListener('timeupdate', handleTimeUpdate);
 fullscreenBtn.addEventListener('click', handleScreenSize);

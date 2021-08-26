@@ -51,11 +51,11 @@ export const deleteObject = (params) => {
   });
 };
 export const loginOnly = (req, res, next) => {
-  if (!res.locals.loggedIn) return res.status(401).redirect('/');
+  if (!req.session.loggedIn) return res.status(401).redirect('/');
   next();
 };
 export const unknownOnly = (req, res, next) => {
-  if (res.locals.loggedIn) return res.status(401).redirect('/');
+  if (req.session.loggedIn) return res.status(401).redirect('/');
   next();
 };
 export const deleteS3Video = async (req, res, next) => {

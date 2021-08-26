@@ -28,6 +28,7 @@ const tree = {
   },
   APIS: {
     root: '/api',
+    addView: `/videos/:${ID_FORM}/view`,
     newComment: `/videos/:${ID_FORM}/new-comment`,
     editComment: `/comments/:${ID_FORM}/edit`,
     deleteComment: `/videos/:${ID_FORM}/delete-comment`,

@@ -6,6 +6,7 @@ import {
   likeComment,
   dislikeComment,
   emailAvailability,
+  addView,
 } from '../controllers/apiHandlers';
 import routes from '../routes';
 
@@ -19,5 +20,5 @@ router.post(Apis.deleteComment, deleteComment);
 router.post(Apis.likeComment, likeComment);
 router.post(Apis.dislikeComment, dislikeComment);
 router.get(Apis.checkEmailAvailability, emailAvailability);
-
+router.get(Apis.addView, addView);
 export default router;

@@ -12,5 +12,4 @@ const genUsername = () => {
   username.value = 'Random_' + Date.now().valueOf().toString().substr(0, 8);
   count += 1;
 };
-
 generator.addEventListener('click', genUsername);

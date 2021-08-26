@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const VideoSchema = new mongoose.Schema({
   vidPath: { type: String, required: true },
-  thumbPath: { type: String },
+  thumbPath: String,
   title: { type: String, required: true },
   description: { type: String, required: true },
   tags: [{ type: String }],

@@ -4,9 +4,9 @@ block contents
   .profile__edit
     form(method="post" enctype="multipart/form-data")
       label(for="avatar") Avatar image
-        input#avatar(type="file", name="avatar" accept="image/*")
+        input#avatar(type="file", name="avatar" accept="image/*" required)
       label(for="username") Username
-        input#userame(type="text", name="username")
+        input#userame(type="text", name="username" required)
       input(type="submit", value="Update Profile")
   .profile__bottom
     a(href="/users/change-password")

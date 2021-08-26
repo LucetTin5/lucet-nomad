@@ -67,8 +67,8 @@ Finish Comment section - ~~_modify_~~ / ~~_delete_~~ / ~~_like_~~ / ~~_dislike_~
   - [ ] Heroku space
 - Default Image?
   - [x] default folder created.
-  - [ ] need default images (for unknown avatar, thumbnail)
-  - [ ] sample videos
+  - [x] need default images (for unknown avatar, thumbnail)
+  - [x] sample videos
 
 ---
 

@@ -19,6 +19,5 @@ router.post(Apis.deleteComment, deleteComment);
 router.post(Apis.likeComment, likeComment);
 router.post(Apis.dislikeComment, dislikeComment);
 router.get(Apis.checkEmailAvailability, emailAvailability);
-// router.post(Apis.checkEmailAvailability, emailAvailability);
 
 export default router;

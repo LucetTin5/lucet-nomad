@@ -8,8 +8,8 @@ block contents
       input#newPassword(type="password", name="newPassword")  
     label(for="newPassword2") Confirm New Password
       input#newPassword2(type="password", name="newPassword2")
-    buttom
-      span Change Password
+      span#pwSameChecker.material-icons.material-icons-outlined="" 
+    input(type="submit", value="Change Password")
   
 block scripts
   script(src="/static/scripts/validator.js") 

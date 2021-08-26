@@ -1,11 +1,9 @@
 import express from 'express';
 import {
-  profile,
-  getEdit,
-  postEdit,
   getChangePassword,
   postChangePassword,
-} from '../controllers/userPages';
+} from '../controllers/userAuths';
+import { profile, getEdit, postEdit } from '../controllers/userPages';
 import { avatarUplaoder, loginOnly } from '../middlewares';
 import routes from '../routes';
 

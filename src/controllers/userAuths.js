@@ -54,3 +54,26 @@ export const logout = (req, res) => {
   req.session.destroy();
   return res.redirect('/');
 };
+export const getChangePassword = (req, res) =>
+  res.render('./screen/users/change-password', {
+    pageTitle: 'Change Password',
+  });
+export const postChangePassword = async (req, res) => {
+  const {
+    body: { password, newPassword },
+    session: { user },
+  } = req;
+  try {
+    if (user.password !== password) {
+      req.flash('error', 'Wrong password');
+      return res.status(400).redirect('/users/change-password');
+    }
+    await User.findByIdAndUpdate(user._id, {
+      password: newPassword,
+    });
+    return res.redirect('/logout');
+  } catch (err) {
+    console.log(err);
+    return res.status(400).redirect('/users/change-password');
+  }
+};

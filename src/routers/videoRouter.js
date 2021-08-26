@@ -9,7 +9,7 @@ import {
   postEdit,
   deleteVideo,
 } from '../controllers/videoController';
-import { videoUploader, loginOnly } from '../middlewares';
+import { videoUploader, loginOnly, deleteS3Video } from '../middlewares';
 const Videos = routes.VIDEOS;
 const router = express.Router();
 
@@ -26,5 +26,5 @@ router
     postUpload
   );
 router.route(Videos.edit).all(loginOnly).get(getEdit).post(postEdit);
-router.get(Videos.delete, loginOnly, deleteVideo);
+router.get(Videos.delete, loginOnly, deleteS3Video, deleteVideo);
 export default router;

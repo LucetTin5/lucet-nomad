@@ -7,3 +7,4 @@ uploads/videos
 .env
 .deploy.env
 static
+prod.controller.js

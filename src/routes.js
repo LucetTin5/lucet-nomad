@@ -7,13 +7,12 @@ const tree = {
     login: '/login',
     logout: '/logout',
     search: '/search',
-    // delete: '/delete-account',
   },
   USERS: {
     root: '/users',
     profile: `/:${ID_FORM}`,
-    edit: `/:${ID_FORM}/edit`,
-    changePassword: `/:${ID_FORM}/change-password`,
+    edit: `/edit`,
+    changePassword: `/change-password`,
   },
   VIDEOS: {
     root: '/videos',

@@ -3,7 +3,7 @@ extends ../../layout
 block contents
   .profile__container
     .profile__header
-      img.profile__image
+      img.profile__image.avatar(src=user.avatarUrl ? user.avatarUrl : "https://picsum.photos/300/300.webp" alt=user.avatarUrl ? user.username : "random image from picsum")
       span=user.name
   .profile__videos.video__grid
 

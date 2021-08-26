@@ -32,7 +32,7 @@ export const postUpload = async (req, res) => {
     const newVid = await Video.create({
       title,
       vidPath: video[0].location,
-      thumbPath: thumb[0].location ?? '',
+      thumbPath: thumb ? thumb[0].location : '',
       description,
       tags: await Video.formatTags(tags),
       uploader: _id,

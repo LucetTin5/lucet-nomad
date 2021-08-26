@@ -59,6 +59,17 @@ Finish Comment section - ~~_modify_~~ / ~~_delete_~~ / ~~_like_~~ / ~~_dislike_~
 
 ### 21.08.26 -- Finish Backend
 
+0826 today's planc
+
+- Deployment setup
+  - [ ] mongodb atlas
+  - [ ] AWS S3
+  - [ ] Heroku space
+- Default Image?
+  - [x] default folder created.
+  - [ ] need default images (for unknown avatar, thumbnail)
+  - [ ] sample videos
+
 ---
 
 - 필수

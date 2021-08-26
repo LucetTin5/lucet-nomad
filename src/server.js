@@ -28,7 +28,7 @@ App.use(
     secret: process.env.COOKIE_SECRET,
     resave: false,
     cookie: {
-      maxAge: 6.048e8,
+      maxAge: 1.728e8,
     },
     saveUninitialized: false,
     // HttpOnly: true,

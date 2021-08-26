@@ -13,7 +13,10 @@
     "not IE 11"
   ],
   "scripts": {
-    "start": "node src/init.js",
+    "start": "node build/init.js",
+    "build": "yarn build:server && yarn build:assets",
+    "build:assets": "webpack --mode=production",
+    "build:server": "babel src -d build",
     "dev": "yarn webpack --mode=development && yarn dev:server",
     "dev:server": "nodemon",
     "dev:assets": "webpack --mode=development -w"

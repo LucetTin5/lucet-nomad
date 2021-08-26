@@ -1,7 +1,61 @@
-.video__controls {
-  opacity: 0;
-  transition: opacity 0.7s ease-in-out;
-  &.showing {
-    opacity: 1;
+.video__container {
+  width: 100%;
+  position: relative;
+  .video__edit {
+    a {
+      position: absolute;
+      top: 5px;
+      right: 20px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      font-size: 20px;
+      border: 1px solid tomato;
+      border-radius: 5px;
+    }
+  }
+  video {
+    width: 100%;
+  }
+  button {
+    background: transparent;
+    outline: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+  .video__controls {
+    opacity: 0;
+    transition: opacity 0.7s ease-in-out;
+    &.showing {
+      opacity: 1;
+    }
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr auto;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    &--play {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      #playBtn {
+        margin: 0px 10px;
+      }
+    }
+    &--volume {
+      display: flex;
+      align-items: center;
+      button {
+        margin-left: 5px;
+      }
+    }
   }
 }

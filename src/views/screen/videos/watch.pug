@@ -6,15 +6,17 @@ block contents
     if String(video.uploader._id) === String(loggedInUser._id)
       .video__edit
         a(href=`${video._id}/edit`)
+          span.material-icons.material-icons-outlined edit 
           span Edit Video
         a(href=`${video._id}/delete`)
+          span.material-icons.material-icons-outlined delete
           span Delete Video
     //- 업로더와 동일한 사람일 시
     video(src=video.vidPath)
     .video__controls
       .video__controls--play
         button#playBtn
-          span.material-icons.material-icons-outlined#playBtyIcon play_circle
+          span.material-icons.material-icons-outlined#playBtnIcon play_circle
           //- span.material-icons.material-icons-outlined pause
       .video__controls--time
         .video__controls--time--info

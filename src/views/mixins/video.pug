@@ -6,7 +6,7 @@ mixin video(video)
       else
         img.video__box--thumb#thumb(src='/static/images/thumb.png' alt=video.title + 'without thumbnail')
       .video__box__info#infoBox
-        span.video__info--title#title=video.title
+        span.video__info--title=video.title
         .video__box__info--meta
           span=video.uploader.username
-          span=video.meta.views 
+          span=video.meta.views 회

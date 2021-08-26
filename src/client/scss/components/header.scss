@@ -1,0 +1,24 @@
+header {
+  width: 100%;
+  nav {
+    width: 100%;
+    padding: 10% 20px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 20% 50% 30%;
+    .nav__others {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    @media screen and (max-width: 1024px) {
+      grid-template-columns: 30% 20% 50%;
+    }
+    @media screen and (max-width: 425px) {
+      .nav__empty {
+        display: none;
+      }
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+}

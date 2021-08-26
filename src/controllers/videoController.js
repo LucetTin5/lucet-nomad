@@ -28,6 +28,8 @@ export const postUpload = async (req, res) => {
       user: { _id },
     },
   } = req;
+  console.log(req.files);
+  return res.end();
   try {
     const newVid = await Video.create({
       title,

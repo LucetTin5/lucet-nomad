@@ -11,7 +11,7 @@ const s3 = new aws.S3({
 });
 
 const storage = (folder) => {
-  multerS3({
+  return multerS3({
     s3,
     bucket: `lucet-wetube/${folder}/`,
     acl: 'public-read',

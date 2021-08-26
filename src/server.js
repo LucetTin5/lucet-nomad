@@ -14,7 +14,7 @@ import videoRouter from './routers/videoRouter';
 import socialRouter from './routers/socialRouter';
 import apiRouter from './routers/apiRouter';
 import { globalVariables } from './middlewares';
-import { DB } from './database';
+import { clientPromise } from './database';
 
 const App = express();
 const logger = morgan('dev');
@@ -34,7 +34,7 @@ App.use(
     saveUninitialized: false,
     HttpOnly: true,
     secure: true,
-    store: MongoStore.create({ clientPromise: DB, dbName: 'firegoblet' }),
+    store: MongoStore.create({ clientPromise, dbName: 'firegoblet' }),
   })
 );
 App.use(flash());

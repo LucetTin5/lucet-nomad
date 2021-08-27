@@ -34,7 +34,7 @@ export const globalVariables = (req, res, next) => {
   next();
 };
 
-const deleteParams = (folder, fileId) => {
+const deleteParams = ({ folder, fileId }) => {
   return {
     Bucket: `${process.env.S3_NAME}/${folder}`,
     Key: fileId,
@@ -59,19 +59,34 @@ export const unknownOnly = (req, res, next) => {
   next();
 };
 export const deleteS3Video = async (req, res, next) => {
-  const { _id } = req.params;
-  const video = await Video.findById(_id);
-  if (!video) {
-    return res.status(404).redirect('/');
+  const { id } = req.params;
+  const video = await Video.findById(id);
+  const vidId = video.vidPath.toString().match(/[0-9a-z]+$/);
+  const thumbId =
+    video.thumbPath !== ''
+      ? video.thumbPath.toString().match(/[0-9a-z]+$/)
+      : '';
+  await s3.deleteObject(
+    {
+      Bucket: 'lucet-wetube/video',
+      Key: vidId[0],
+    },
+    (err, data) => {
+      if (err) console.log('err:', err, err.stack);
+      console.log('data: ', data);
+    }
+  );
+  if (!thumbId.length) {
+    await s3.deleteObject(
+      {
+        Bucket: 'lucet-wetube',
+        Key: `/video/${thumbId[0]}`,
+      },
+      (err, data) => {
+        if (err) console.log('err:', err, err.stack);
+        console.log('data: ', data);
+      }
+    );
   }
-  const { thumbPath, vidPath } = video;
-  deleteObject({
-    folder: 'video',
-    fileId: thumbPath.toString().match(/[0-9a-z]+$/),
-  });
-  deleteObject({
-    folder: 'video',
-    fileId: vidPath.toString().match(/[0-9a-z]+$/),
-  });
   next();
 };

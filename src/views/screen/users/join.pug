@@ -2,20 +2,21 @@ extends ../../layout
 include ../../mixins/social
 
 block contents
-  form(method="post")
-    span.material-icons.material-icons-outlined email
-      input#email(type="email" name="email" required)
-    button#emailChecker(type="button") Check Availability
-    label(for="username") Username
-      input#username(type="text", name="username" required) 
-    button#usernameGenerator(type="button") Get Random Username
-    label(for="password") Password
-      input#password(type="password", name="password" required)
-    label(for="password2") Confirm Password
-      input#password2(type="password", name="password2" required)
-      span#pwSameChecker.material-icons.material-icons-outlined="" 
-    input(type="submit", value="Create Account")
-  +social()
+  .join__container 
+    form(method="post")
+      span.material-icons.material-icons-outlined email
+        input#email(type="email" name="email" required)
+      button#emailChecker(type="button") Check Availability
+      label(for="username") Username
+        input#username(type="text", name="username" required) 
+      button#usernameGenerator(type="button") Get Random Username
+      label(for="password") Password
+        input#password(type="password", name="password" required)
+      label(for="password2") Confirm Password
+        input#password2(type="password", name="password2" required)
+        span#pwSameChecker.material-icons.material-icons-outlined="" 
+      input(type="submit", value="Create Account")
+    +social()
 
 block scripts
   script(src="/static/scripts/validator.js")

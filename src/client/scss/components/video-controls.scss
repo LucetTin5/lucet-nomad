@@ -1,22 +1,30 @@
 .video__container {
   width: 100%;
   position: relative;
+  .material-icons {
+    font-size: 30px;
+  }
   .video__edit {
+    position: absolute;
+    top: -35px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     a {
-      position: absolute;
-      top: 5px;
-      right: 20px;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      font-size: 20px;
-      border: 1px solid tomato;
-      border-radius: 5px;
+      .material-icons {
+        font-size: 30px;
+      }
+      &:first-child {
+        margin-right: 5px;
+      }
     }
   }
   video {
     width: 100%;
+    @media screen and (min-width: 1024px) {
+      min-width: 640px;
+    }
   }
   button {
     background: transparent;
@@ -31,24 +39,36 @@
     &.showing {
       opacity: 1;
     }
-    background: #1a1d27;
+    background: rgba(20, 20, 22, 0.705);
     position: absolute;
     bottom: 5%;
     left: 0;
     right: 0;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr auto;
+    grid-template-columns: 0.5fr 5fr 1fr auto;
     gap: 10px;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    padding-right: 15px;
     &--play {
       display: flex;
       align-items: center;
-      justify-content: space-around;
+      justify-content: center;
       #playBtn {
+        display: flex;
+        align-items: center;
         margin: 0px 10px;
+      }
+    }
+    &--time {
+      display: grid;
+      grid-template-columns: 1fr 4fr;
+      &--info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
     &--volume {
@@ -56,7 +76,29 @@
       align-items: center;
       button {
         margin-left: 5px;
+        display: flex;
+        align-items: center;
       }
+      #volume {
+        max-width: 100px;
+      }
+    }
+    &--screen-size {
+      button {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+  &:fullscreen {
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    .material-icons {
+      font-size: 48px;
+    }
+    #volume {
+      max-width: 100%;
     }
   }
 }

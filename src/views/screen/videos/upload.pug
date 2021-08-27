@@ -1,15 +1,16 @@
 extends ../../layout
 
 block contents
-  form(method="post" enctype="multipart/form-data")
-    label(for="video") Video
-      input#video(type="file", name="video" accept="video/*" required)
-    label(for="thumb") Thumbnail image
-      input#thumb(type="file", name="thumb" accept="image/*")
-    label(for="title") Title
-      input#title(type="text", name="title" minlength="3" required)
-    label(for="description") Description
-      input#description(type="text", name="description" minlength="30")
-    label(for="tags") Tags seperated by comma
-      input#tags(type="text", name="tags")
-    input(type="submit", value="Upload Video")
+  .upload__container
+    form(method="post" enctype="multipart/form-data")
+      label(for="video") Video
+        input#video(type="file", name="video" accept="video/*" required)
+      label(for="thumb") Thumbnail image
+        input#thumb(type="file", name="thumb" accept="image/*")
+      label(for="title") Title
+        input#title(type="text", name="title" minlength="3" required)
+      label(for="description") Description
+        input#description(type="text", name="description" minlength="30")
+      label(for="tags") Tags seperated by comma
+        input#tags(type="text", name="tags")
+      input(type="submit", value="Upload Video")

@@ -96,8 +96,9 @@ const handleFocused = (event) => {
   const { target } = event;
   if (videoContainer.contains(target)) {
     focused = true;
+  } else {
+    focused = false;
   }
-  focused = false;
 };
 const handleKeyDown = (event) => {
   const { code } = event;
@@ -142,7 +143,7 @@ const fullscreenChecker = () => {
   } else {
     fullscreen = false;
   }
-  fullscreenBtnIcon.innerText = fullscreen ? 'fullscreen-exit' : 'fullscreen';
+  fullscreenBtnIcon.innerText = fullscreen ? 'fullscreen_exit' : 'fullscreen';
 };
 const handleScreenSize = () => {
   if (!fullscreen) {

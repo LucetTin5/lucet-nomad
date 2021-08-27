@@ -4,7 +4,7 @@ import Comment from '../models/Comment';
 
 export const getHome = async (req, res) => {
   try {
-    const videos = await Video.find({});
+    const videos = await Video.find({}).populate('uploader');
     if (videos === {}) {
       throw Error('No Videos');
     }
@@ -60,7 +60,7 @@ export const watch = async (req, res) => {
       },
     ]);
     return res.render('./screen/videos/watch', {
-      pageTitle: video.title,
+      pageTitle: 'Watch ' + video.title,
       video,
     });
   } catch (err) {
@@ -112,13 +112,14 @@ export const search = async (req, res) => {
     let videos;
     switch (option) {
       case 'title':
-        videos = await Video.find({ title: regex });
+        videos = await Video.find({ title: { $regex: regex } }).populate(
+          'uploader'
+        );
         break;
       case 'tags':
-        videos = await Video.find({ tags: regex });
-        break;
-      case 'uploader':
-        videos = await Video.find({ uploader: regex });
+        videos = await Video.find({ tags: { $regex: regex } }).populate(
+          'uploader'
+        );
         break;
     }
     return res.render('./screen/videos/search', {
@@ -132,27 +133,30 @@ export const search = async (req, res) => {
       .render('./screen/videos/search', { pageTitle: 'Nothing Found' });
   }
 };
-
 export const deleteVideo = async (req, res) => {
-  const { id } = req.params;
+  const {
+    parmas: { id },
+    session: {
+      user: { _id },
+    },
+  } = req;
   try {
-    const video = await Video.findById(id).populate(['uploader', 'comments']);
-    if (video.populated('uploader') && video.uploader.length !== 0) {
-      console.log('uploader populated');
-      const { _id } = video.uploader;
-      const uploader = await User.findById(_id);
-      console.log('uploader videos before: ', uploader.video);
-      uploader.videos = uploader.videos.filter((vid) => String(vid) !== id);
-      console.log('uploader videos after: ', uploader.video);
-      uploader.save();
+    const video = await Video.findById(id).populate('comments');
+    if (String(video.uploader) !== _id) {
+      req.flash('err', `You're not uploader of this video`);
+      return res.status(401).redirect(`/videos/${id}`);
     }
-    if (video.pupulated('comments') && video.comments.length !== 0) {
-      for (const cid of video.comments) {
+    const uploader = await User.findById(video.uploader);
+    uploader.videos = uploader.videos.filter((vid) => String(vid) !== id);
+    uploader.save();
+    const comments = video.comments;
+    if (!comments.length) {
+      for (cid in comments) {
         await Comment.findByIdAndRemove(cid, {}, (err) => console.log(err));
       }
+    } else {
+      console.log('No comment');
     }
-    await Video.findByIdAndRemove(id, {}, (err) => console.log(err));
-    console.log('video deleted', `${video ? 'fail' : 'deleted'}`);
     return res.redirect('/');
   } catch (err) {
     console.log(err);

@@ -1,4 +1,37 @@
 .comments__container {
-  width: 100%;
-  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+.comments__comments {
+  display: flex;
+  flex-direction: column;
+  padding-right: 5px;
+  .comment__comment {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 15% 1fr 20%;
+    align-items: center;
+    min-height: 50px;
+    font-size: 1.1em;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .avatar {
+        width: 25px;
+        height: 25px;
+        margin-right: 5px;
+      }
+    }
+    .comment__buttons {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .material-icons {
+      font-size: 24px;
+    }
+  }
 }

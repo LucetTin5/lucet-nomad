@@ -3,14 +3,13 @@ include ../../mixins/comment
 
 block contents 
   .video__container(data-id=video._id)
-    if String(video.uploader._id) === String(loggedInUser._id)
-      .video__edit
-        a(href=`${video._id}/edit`)
-          span.material-icons.material-icons-outlined edit 
-          span Edit Video
-        a(href=`${video._id}/delete`)
-          span.material-icons.material-icons-outlined delete
-          span Delete Video
+    if loggedIn
+      if String(video.uploader._id) === String(loggedInUser._id)
+        .video__edit
+          a(href=`${video._id}/edit`)
+            span.material-icons.material-icons-outlined edit 
+          a(href=`${video._id}/delete`)
+            span.material-icons.material-icons-outlined delete
     //- 업로더와 동일한 사람일 시
     video(src=video.vidPath)
     .video__controls
@@ -39,9 +38,11 @@ block contents
     if loggedIn
       form.comments__new-comment(method="POST")
         //- img 현재 사용자의 프로필 사진
-        input#text(type="text" name="text" placeholder="New Comment")
+        input#text(type="text" name="text" placeholder="Add New Comment")
         button#addBtn
           span.material-icons.material-icons-outlined add_box
+    
+block aside   
     .comments__comments
       each comment in video.comments
         +comment(comment)

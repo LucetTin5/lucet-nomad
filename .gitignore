@@ -8,3 +8,4 @@ uploads/videos
 .deploy.env
 static
 prod.controller.js
+init.dev.js

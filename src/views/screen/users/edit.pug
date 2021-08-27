@@ -6,13 +6,14 @@ block contents
       label(for="avatar") Avatar image
         input#avatar(type="file", name="avatar" accept="image/*" required)
       label(for="username") Username
-        input#username(type="text", name="username" required)
+        input#username(type="text", name="username" value=loggedInUser.username required)
       button#usernameGenerator(type="button") Get Random Username
-      input(type="submit", value="Update Profile")
-  .profile__bottom
-    a(href="/users/change-password")
-      span Change Password
-      span.material-icons.material-icons-outlined arrow_forward
+      button
+        span Update Profile
+    .profile__bottom
+      a(href="/users/change-password")
+        span Change Password
+        span.material-icons.material-icons-outlined arrow_forward
 
 block scripts
   script(src="/static/scripts/username.js")

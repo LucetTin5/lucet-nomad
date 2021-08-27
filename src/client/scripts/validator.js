@@ -31,7 +31,9 @@ const checkSameness = (event) => {
   } = event;
   if (password.value !== value) {
     pwChecker.innerText = 'cancel';
+    pwChecker.style.color = '#d50000';
   } else {
+    pwChecker.style.color = '#00e676';
     pwChecker.innerText = 'check_circle_outline';
     pwChecker.classList.add('matched');
   }

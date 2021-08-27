@@ -1,0 +1,25 @@
+.social__box {
+  margin-top: 20px;
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button {
+      font-size: 1.1em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      i {
+        margin-right: 5px;
+        font-size: 1.3em;
+      }
+    }
+    .social__github {
+      background: rgb(14, 12, 12);
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px,
+        rgb(51, 51, 51) 0px 0px 0px 3px;
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+  }
+}

@@ -1,4 +1,3 @@
-// import 'dotenv/config';
 import 'regenerator-runtime/runtime';
 import './database';
 import './models/User';

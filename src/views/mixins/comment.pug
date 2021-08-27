@@ -4,7 +4,7 @@ mixin comment(comment)
       if comment.writer.avatarUrl
         img(src=comment.owner.avatarUrl alt="comment writer's profile image").avatar.avatar-small
       else
-        img(src='/static/images/user.svg' alt="comment writer's profile without image").avatar.avatar-small
+        img(src='/static/images/comment.svg' alt="comment writer's profile without image").avatar.avatar-small
     span.comment-text=comment.text
     .comment__buttons
       if !loggedIn

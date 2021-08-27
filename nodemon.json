@@ -5,5 +5,5 @@
     "static/*",
     "webpack.config.js"
   ],
-  "exec": "babel-node src/init.js --delay 3"
+  "exec": "babel-node src/init.dev.js --delay 3"
 }

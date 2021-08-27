@@ -66,7 +66,7 @@ const editComment = (event) => {
   target.removeEventListener('click', editComment);
   target.querySelector('span').innerText = 'done';
   const comment = getTargetNode(target);
-  comment.querySelector('.comment-delete').disabled = true;
+  comment.querySelector('.comment-delete').style = 'display:none';
   const currentComment = comment.querySelector('.comment-text');
   const input = document.createElement('input');
   input.type = text;
@@ -101,7 +101,7 @@ const editCommentFinish = async (event) => {
       currentComment.setAttribute('style', 'display: inline');
       target.querySelector('span').innerText = 'edit_note';
       target.addEventListener('click', editComment);
-      comment.querySelector('.comment-delete').disabled = false;
+      comment.querySelector('.comment-delete').style = 'display:inline-block';
     }
   } catch (err) {
     console.log(err);
@@ -143,7 +143,9 @@ class FakeComment {
   }
   template() {
     return `<div class="comment__comment" data-id="${this.$id}">
-      <a href="/users/${this.$writer}"></a>
+      <a href="/users/${this.$writer}">
+        <img src="/static/images/comment.svg" alt='new comment' class="avatar avatar-small" />
+      </a>
       <span class="comment-text">${this.$text}</span>
       <div class="comment__buttons">
         <button class="comment-edit">

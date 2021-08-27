@@ -1,16 +1,15 @@
 extends ../../layout
 include ../../mixins/social
 
-block contents 
-  form(method="post")
-    label(for="email") E-mail
-      input#email(type="email", name="email")
-    label(for="password") Password
-      input#password(type="password", name="password")
-    input(type="submit", value="Log In")
-  +social()
-  .bottom
-    span Don't have an account?
-    a(href="/join")
-      span Create new account
-      span.material-icons.material-icons-outlined arrow_forward
+block contents
+  .login__container
+    form(method="post")
+      label(for="email") E-mail
+        input#email(type="email", name="email")
+      label(for="password") Password
+        input#password(type="password", name="password")
+      input(type="submit", value="Log In")
+    .login__bottom
+      a(href="/join")
+        span Create new account
+    +social()

@@ -1,8 +1,10 @@
 extends ../../layout
 
 block contents
-  .video__edit
-    form(method="post")
+  .video__edit__container
+    form(method="post" enctype='multipart/form-data')
+      label(for="thumb") Thumbnail
+        input#thumb(type="file", name="thumb" required) 
       label(for="title") Title
         input#title(type="text", name="title" value=video.title)
       label(for="description") Description

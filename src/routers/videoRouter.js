@@ -25,6 +25,10 @@ router
     ]),
     postUpload
   );
-router.route(Videos.edit).all(loginOnly).get(getEdit).post(postEdit);
+router
+  .route(Videos.edit)
+  .all(loginOnly)
+  .get(getEdit)
+  .post(videoUploader.single('thumb'), postEdit);
 router.get(Videos.delete, loginOnly, deleteS3Video, deleteVideo);
 export default router;

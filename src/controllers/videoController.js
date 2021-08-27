@@ -87,12 +87,14 @@ export const postEdit = async (req, res) => {
   const {
     params: { id },
     body: { title, description, tags },
+    file,
   } = req;
   try {
     await Video.findByIdAndUpdate(id, {
       title,
       description,
       tags: await Video.formatTags(tags),
+      thumbPath: file.location,
     });
     return res.redirect(`/videos/${id}`);
   } catch (err) {

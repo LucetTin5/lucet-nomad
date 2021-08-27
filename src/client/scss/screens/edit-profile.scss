@@ -5,10 +5,9 @@
   align-items: center;
   font-size: 1.2em;
   form {
-    height: 300px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    padding-top: 40px;
+    height: 350px;
+    border-radius: 10px;
+    padding: 25px 0;
     & > label {
       font-weight: 600;
       width: 60%;
@@ -32,22 +31,27 @@
     font-weight: 600;
   }
   .profile__bottom {
-    padding-top: 20px;
-    width: 500px;
-    height: 80px;
-    background: rgba(123, 31, 162, 0.8);
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    &:focus,
+    &:hover {
+      transform: scale(1.2);
+    }
+    background: $btn;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     a {
       display: flex;
       align-items: center;
       justify-content: center;
-      .material-icons {
-        font-size: 30px;
-      }
+    }
+    .material-icons {
+      font-size: 30px;
     }
   }
 }

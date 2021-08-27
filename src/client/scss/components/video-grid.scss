@@ -4,15 +4,15 @@
   display: grid;
   gap: 50px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 250px;
   .video__box {
     width: 100%;
     border-radius: 10px;
-    height: 25vh;
+    max-height: 250px;
     display: flex;
     flex-direction: column;
     .video__box--thumb {
-      max-width: 100%;
-      height: 100%;
+      height: 250px;
       object-fit: cover;
       object-position: center;
       border-radius: 10px;
